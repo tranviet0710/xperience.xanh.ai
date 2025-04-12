@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Secure Landing</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"
+        integrity="sha512-TDkL5ppjuCcmxGnFMeGpMfbOGrtDkKq+Q54ArJGtuSbDLtZtVJoNExGFH8eKmgGj8GCFY3f+zXsyIlQN7Jw2vA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: sans-serif;
+            background: #f0f0f0;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="error" class="error"></p>
+
+    <script>
+        const storedHash = "$2a$10$Q9Z9ZzX5DwVlZP9o6BCfveHRs1FeS5EY1GEoN7eP3u57EhWcr7eYK";
+
+        function checkPassword() {
+            const userInput = document.getElementById("password").value;
+            const errorEl = document.getElementById("error");
+
+            bcrypt.compare(userInput, storedHash, function (err, res) {
+                if (res) {
+                    window.location.href = "index.html";
+                } else {
+                    errorEl.textContent = "Incorrect password.";
+                    alert("Incorrect password.");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
