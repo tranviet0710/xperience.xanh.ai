@@ -2727,6 +2727,10 @@ ul.stars li {
     text-transform: capitalize;
 }
 
+.capital>a {
+    color: black;
+}
+
 .cart-icon {
     float: right;
     width: 35px;
@@ -2969,7 +2973,6 @@ h3.cart-price {
 
 .main-footer p {
     font-size: 14px;
-    text-transform: capitalize;
     margin-bottom: 25px;
     color: #b7b7b7;
 }
